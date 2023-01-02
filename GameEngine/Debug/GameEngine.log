@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\claw\Desktop\GameEngine\GameEngine\GameEngine\main.cpp(93,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  GameEngine.vcxproj -> C:\Users\claw\Desktop\GameEngine\GameEngine\Debug\GameEngine.exe
