@@ -5,6 +5,11 @@ Window::Window(char* name, int width, int height)
 	this -> name = name;
 	this -> width = width;
 	this -> height = height;
+	this->yaw = 0;
+	this->pitch = 0;
+	this->lastX = 0;
+	this->lastY = 0;
+	this->mouseMoved = false;
 	init();
 
 	for (int i = 0; i < MAX_KEYBOARD; i++)
@@ -44,6 +49,9 @@ void Window::init()
 	}
 
 	glfwMakeContextCurrent(window);
+
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	mouseEnabled = true;
 
 	//callbacks for user input
 	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -129,7 +137,11 @@ bool Window::isMousePressed(int button)
 //Handling keyboard actions
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	Window* wind = (Window*) glfwGetWindowUserPointer(window);
+	Window* wind = (Window*)glfwGetWindowUserPointer(window);
+
+	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) {			//Callback for Mouse toggle
+		wind->setMouseEnabled(!wind->getMouseEnabled());
+	}
 
 	if (action != GLFW_RELEASE)
 		wind->setKey(key, true);
@@ -152,5 +164,52 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 {
 	Window* wind = (Window*)glfwGetWindowUserPointer(window);
-	wind->setMousePos(xpos, ypos);
+	if (wind->getMouseEnabled()) {
+		return;
+	}
+
+	wind->setMouseMoved(true);
+
+	if (wind->firstMouse)
+	{
+		wind->setLastX(xpos);
+		wind->setLastY(ypos);
+		wind->firstMouse = false;
+	}
+
+	float xoffset = xpos - wind->getLastX();
+	float yoffset = wind->getLastY() - ypos;
+	wind->setLastX(xpos);
+	wind->setLastY(ypos);
+
+	float sensitivity = 0.3f;
+	xoffset *= sensitivity;
+	yoffset *= sensitivity;
+
+	wind->setYaw(xoffset);
+	wind->setPitch(yoffset);
+
+	if (wind->getPitch() > 89.0f)
+		wind->setPitch(89.0f);
+	if (wind->getPitch() < -89.0f)
+		wind->setPitch(-89.0f);
+
+	/*glm::vec3 direction;
+	direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	direction.y = sin(glm::radians(pitch));
+	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	cameraFront = glm::normalize(direction);*/
+}
+
+
+void Window::setMouseEnabled(bool newMouseEnabled) {
+	if (newMouseEnabled) {
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	}
+	else
+	{
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		firstMouse = true;
+	}
+	mouseEnabled = newMouseEnabled;
 }
