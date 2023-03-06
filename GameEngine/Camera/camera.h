@@ -37,5 +37,6 @@ class Camera
 
 		void rotateOx(float angle);
 		void rotateOy(float angle);
+		void rotateOz(float angle);
 };
 
