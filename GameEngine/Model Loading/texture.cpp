@@ -52,6 +52,8 @@ GLuint loadBMP(const char * imagepath) {
 	// Create OpenGL texture
 	GLuint textureID;
 	glGenTextures(1, &textureID);
+	glEnable(GL_BLEND);
+	glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
