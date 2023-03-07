@@ -23,13 +23,21 @@ From VisualStudio 2022 run with debugging on Win32.
 # Commands
 
 W			-	swim forward
+
 S			-	swim back
+
 A			-	swim left
+
 D			-	swim right
+
 Q			-	swim up
+
 E			-	swim down
+
 Z			-	roll left
+
 C			-	roll right
+
 SPACE			-	toggle cursor on/off 
 
 # FUTURE IMPLEMENTATIONS
