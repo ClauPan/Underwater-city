@@ -11,7 +11,7 @@ tasks and guide them along their journey. From the settings menu, that can be ac
 part of the HUD, the player can also adjust the speed of their character's movement, the sensitivity of the mouse rotation 
 and adjust the visibility level of the scene or toggle on/off the animation.
 
-Pictures/intro.png
+<img src="Pictures/intro.png">
 
 # Dependencies used
 
