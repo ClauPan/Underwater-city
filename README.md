@@ -13,6 +13,8 @@ and adjust the visibility level of the scene or toggle on/off the animation.
 
 <img src="Pictures/intro.png">
 
+<img src="Pictures/intro.png">
+
 # Dependencies used
 
 OpenGl with GLFW 3.2.1 
