@@ -117,7 +117,6 @@ int main() {
 	Shader shaderLight("Shaders/sun_vertex_shader.glsl", "Shaders/sun_fragment_shader.glsl");
 	Shader shaderWater("Shaders/water_vs.glsl", "Shaders/water_fs.glsl");
 	Shader shaderPedestal("Shaders/pedestal_vs.glsl", "Shaders/pedestal_fs.glsl");
-	Shader shaderDragonTempleRuin("Shaders/dragonRuin_vs.glsl", "Shaders/dragonRuin_fs.glsl");
 	Shader shaderRock2("Shaders/rock2_vs.glsl", "Shaders/rock2_fs.glsl");
 	Shader shaderRock3("Shaders/rock3_vs.glsl", "Shaders/rock3_fs.glsl");
 	Shader shaderRock4("Shaders/rock4_vs.glsl", "Shaders/rock4_fs.glsl");
@@ -150,7 +149,6 @@ int main() {
 	GLuint textureWater = loadBMP("Resources/Textures/back2.bmp");
 	GLuint textureRock = loadBMP("Resources/Textures/SandG_001.bmp");
 	GLuint texturePedestal = loadBMP("Resources/Textures/BaseColorPedestal.bmp");
-	GLuint textureDragonTempleRuin = loadBMP("Resources/Textures/BaseColorPedestal.bmp");
 	GLuint textureRock2 = loadBMP("Resources/Textures/Rock_2_Base_Color.bmp");
 	GLuint textureRock3 = loadBMP("Resources/Textures/Rock_2_Base_Color.bmp");
 	GLuint textureRock4 = loadBMP("Resources/Textures/Rock_2_Base_Color.bmp");
@@ -298,13 +296,6 @@ int main() {
 	texturesPedestal[0].id = texturePedestal;
 	texturesPedestal[0].type = "texture_diffuse";
 
-	//dragon temple
-
-	std::vector<Texture> texturesDragonTempleRuin;
-	texturesDragonTempleRuin.push_back(Texture());
-	texturesDragonTempleRuin[0].id = textureDragonTempleRuin;
-	texturesDragonTempleRuin[0].type = "texture_diffuse";
-
 	//big rocks
 
 	std::vector<Texture> texturesRock2;
@@ -402,7 +393,6 @@ int main() {
 	Mesh terrain = loader.loadObj("Resources/Models/plane1.obj", texturesRock);
 	Mesh sphere = loader.loadObj("Resources/Models/sphere.obj", texturesWater);
 	Mesh pedestal = loader.loadObj("Resources/Models/pedestal.obj", texturesPedestal);
-	Mesh DragonTempleRuin = loader.loadObj("Resources/Models/DragonTempleRuins.obj", texturesDragonTempleRuin);
 	Mesh Rock2 = loader.loadObj("Resources/Models/Rock_2.obj", texturesRock2);
 	Mesh Rock3 = loader.loadObj("Resources/Models/Rock_3.obj", texturesRock3);
 	Mesh Rock4 = loader.loadObj("Resources/Models/Rock_4.obj", texturesRock4);
@@ -650,16 +640,7 @@ int main() {
 			OBJ(ViewMatrix, ProjectionMatrix, shaderPilares, matrixPilares);
 			pilares.draw(shaderPilares);
 		}
-
-		//dragon temple
-
-		shaderDragonTempleRuin.use();
-		glm::mat4 matrixDragonTempleRuin = glm::mat4(1.0);
-		matrixDragonTempleRuin = glm::scale(matrixDragonTempleRuin, glm::vec3(0.2f, 0.2f, 0.2f));
-		matrixDragonTempleRuin = glm::translate(matrixDragonTempleRuin, glm::vec3(250.0f, 100.0f, -500.0f));
-		OBJ(ViewMatrix, ProjectionMatrix, shaderDragonTempleRuin, matrixDragonTempleRuin);
-		DragonTempleRuin.draw(shaderDragonTempleRuin);
-
+		
 		//big rocks
 
 		shaderRock2.use();
@@ -898,22 +879,4 @@ void processKeyboardInput()
 		angleOz += deltaTime / 1.9 * 57.2957795;
 		camera.rotateOz(cameraSpeed);
 	}
-
-	//rotation
-	/*if (window.isPressed(GLFW_KEY_LEFT)) {
-		angleOy += cameraSpeed1;
-		camera.rotateOy(cameraSpeed1);
-	}
-	if (window.isPressed(GLFW_KEY_RIGHT)) {
-		angleOy -= cameraSpeed1;
-		camera.rotateOy(-cameraSpeed1);
-	};
-	if (window.isPressed(GLFW_KEY_UP)) {
-		angleOx += cameraSpeed1;
-		camera.rotateOx(cameraSpeed1);
-	}
-	if (window.isPressed(GLFW_KEY_DOWN)) {
-		angleOx -= cameraSpeed1;
-		camera.rotateOx(-cameraSpeed1);
-	}*/
 }
