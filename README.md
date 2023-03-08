@@ -1,6 +1,6 @@
 # Atlantis
 
-Underwater is a first-person RPG game where the character is transported in an underwater ruined city for an experiment.
+Atlantis: Underwater is a first-person RPG game where the character is transported in an underwater ruined city for an experiment.
 They are trapped in an air bubble along with a tiny robot that is controlled by the devs. Through this companion, the player 
 receives instructions on how to escape this experiment.
 
