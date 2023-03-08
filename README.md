@@ -18,7 +18,7 @@ ImGUI
 
 # How to run
 
-From VisualStudio 2022 run with debugging on Win32.
+From VisualStudio 2022 run with debugging on x86.
 
 # Commands
 
@@ -40,7 +40,7 @@ C			-	roll right
 
 SPACE			-	toggle cursor on/off 
 
-# FUTURE IMPLEMENTATIONS
+# Future Implementations
 
 ~  Story System  ~
 
