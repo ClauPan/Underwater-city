@@ -15,16 +15,16 @@ and adjust the visibility level of the scene or toggle on/off the animation.
 
 <img src="Pictures/main_game.png">
 
-# Dependencies used
+## Dependencies used
 
 OpenGl with GLFW 3.2.1 
 ImGUI
 
-# How to run
+## How to run
 
 From VisualStudio 2022 run with debugging on x86.
 
-# Commands
+## Commands
 
 W			-	swim forward
 
@@ -44,7 +44,7 @@ C			-	roll right
 
 SPACE			-	toggle cursor on/off 
 
-# Future Implementations
+## Future Implementations
 
 ~  Story System  ~
 
