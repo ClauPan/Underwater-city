@@ -14,7 +14,7 @@ and adjust the visibility level of the scene or toggle on/off the animation.
 <img src="Pictures/intro.png">
 
 <img src="Pictures/intro.png">
-
+https://github.com/ClauPan/Underwater-city/blob/14698649e8a6b5e9d8e2e67769f62f989c4388d1/Pictures/main_game.png
 # Dependencies used
 
 OpenGl with GLFW 3.2.1 
